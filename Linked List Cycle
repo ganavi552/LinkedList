@@ -1,0 +1,38 @@
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+       ListNode *temp=head;
+        if(temp==NULL)return false;
+        unordered_set<ListNode*> s;
+        while(temp->next!=NULL){
+            if(s.find(temp)!=s.end()){
+                return true;
+            }
+            s.insert(temp);
+            temp=temp->next;
+        }
+        return false;
+    }
+};
+
+ 
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+       ListNode *fast=head;
+       ListNode *slow=head;
+       
+        if(head==NULL){
+            return false;
+        }
+        
+       
+        while(fast!=NULL && fast->next!=NULL){          
+        slow=slow->next;
+        fast=fast->next->next;
+            if(fast==slow) return true;
+        }
+        return false;
+    }
+    
+};
